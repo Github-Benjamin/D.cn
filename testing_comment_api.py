@@ -20,3 +20,4 @@ for i in range(100):
         a = a+1
 
 print '请求失败次数:%s'%b,'请求成功次数:%s'%a
+
