@@ -1,0 +1,2 @@
+package: name='multitouchpro.tests' versionCode='53' versionName='6.2'
+launchable-activity: name='multitouchpro.tests.Multitouch'  label='Multitouch Test' icon=''
