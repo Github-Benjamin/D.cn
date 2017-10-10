@@ -11,8 +11,8 @@ def swipeDo(x1,y1,x2,y2,t=1000):
 
 desired_caps = {
     'platformName': 'Android',
-    'deviceName': '2008edbdb51c',
-    'platformVersion': '4.4',
+    'deviceName': '91QEBNQ2S2TM',
+    'platformVersion': '5.1',
     'appPackage': 'com.diguayouxi',
     'appActivity': 'com.diguayouxi.ui.FirstActivity',
     'newCommandTimeout':30,
@@ -23,7 +23,10 @@ driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 # 休眠10秒等待页面加载完成
 # 关闭更新弹窗
 time.sleep(20)
-driver.find_element_by_id("com.diguayouxi:id/update_head_close").click()
+try:
+    driver.find_element_by_id("com.diguayouxi:id/update_head_close").click()
+except:
+    pass
 
 
 # 滑动首屏Banner区域
@@ -81,7 +84,7 @@ except:
 
 # 点击顶部Tab选项，点击分类
 driver.find_elements_by_android_uiautomator("new UiSelector().text(\"分类\")")[0].click()
-swipeDo(200,940,200,600)
+# swipeDo(300,940,300,600)
 driver.find_elements_by_android_uiautomator("new UiSelector().text(\"MOBA\")")[0].click()
 # 依次点击同类下分类、热度排序、筛选
 driver.find_element_by_id("com.diguayouxi:id/fl_category").click()
@@ -108,7 +111,7 @@ driver.find_element_by_id("com.diguayouxi:id/home_rb_mainpage_net_game").click()
 try:
    for i in range(5):
         time.sleep(2)
-        swipeDo(666,700,200,700)
+        swipeDo(700,700,100,700)
         for i in range(6):
             time.sleep(2)
             swipeDo(300, 900, 300, 500)
@@ -120,7 +123,7 @@ driver.find_element_by_id("com.diguayouxi:id/home_rb_mainpage_original").click()
 try:
    for i in range(5):
         time.sleep(2)
-        swipeDo(666,700,200,700)
+        swipeDo(700,700,100,700)
         for i in range(6):
             time.sleep(2)
             swipeDo(300, 900, 300, 500)
