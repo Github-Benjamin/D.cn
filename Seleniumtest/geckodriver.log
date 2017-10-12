@@ -1,0 +1,68 @@
+1504246368967	geckodriver	INFO	geckodriver 0.18.0
+1504246368987	geckodriver	INFO	Listening on 127.0.0.1:61485
+1504246371000	geckodriver::marionette	INFO	Starting browser D:\app_path\firefox\firefox.exe with args ["-marionette"]
+1504246371767	Marionette	INFO	Listening on port 61491
+1504246372063	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 8228] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-esr52-w32-000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+[Child 11680] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-esr52-w32-000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+44_21095_20930&req=2&csor=8&pwd=Python%E7%A0%94&cb=jQuery110209068348423949669_1504172804608&_=1504172804617, line 1: TypeError: jQuery110209068348423949669_1504172804608 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Pytho&json=1&p=3&sid=1444_21095_20930&req=2&csor=5&pwd=Pyth&cb=jQuery110209068348423949669_1504172804608&_=1504172804614, line 1: TypeError: jQuery110209068348423949669_1504172804608 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Python%E7%A0%94%E5%8F%91%E6%B5%8B%E8%AF%95&json=1&p=3&sid=1444_21095_20930&req=2&csor=10&pwd=Python%E7%A0%94%E5%8F%91%E6%B5%8B&cb=jQuery110209068348423949669_1504172804608&_=1504172804619, line 1: TypeError: jQuery110209068348423949669_1504172804608 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=Python%E7%A0%94%E5%8F%91%E6%B5%8B&json=1&p=3&sid=1444_21095_20930&req=2&csor=9&pwd=Python%E7%A0%94%E5%8F%91&cb=jQuery110209068348423949669_1504172804608&_=1504172804618, line 1: TypeError: jQuery110209068348423949669_1504172804608 is not a function
+[Child 8688] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-esr52-w32-000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+ipc/glue/MessageChannel.cpp, line 2143
+exture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xE20003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x3E0003,name=PCompositable::Msg_Destroy) Channel error: cannot send/recv
+
