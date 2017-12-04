@@ -1,0 +1,5 @@
+comlum:time,mem,cpu,upflow,downflow,battery
+comlumTotal:time,sysmemleft,syscpu,totalpss,totalcpu,totalcputime,totalupflow,totaldownflow,totalbattery,batterleft,fps
+app_info:[{"package_name":"com.westbund.heros.en","location":"\/data\/data\/com.westbund.heros.en","version":"1.0.0007","application_name":"tap hero"}]
+device_info:{"cpu_num":4,"hardware":"qcom","sys_name":"DISPLAY","phone_type":"HUAWEI B199","imei":"A0000049ECE163","screen_width":720,"mac":"20:08:ed:bd:c4:bc","cpu_type":"ARMv7 Processor rev 3 (v7l)","bootloader":"unknown","storage_size":"1.85GB","android_vesion":"4.4.2","carrieroperator":"中国电信","cpu_freq":1593600,"imsi":"460031219564879","sys_version_num":"ID","screen_high":1280,"phone_brand":"Huawei","screen_desi":2,"serial":"2008edbdb51c"}
+tips:MjAxNy0xMi0wNC0xMC00Mi0yMSUzQQ==
