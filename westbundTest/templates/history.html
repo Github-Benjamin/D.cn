@@ -1,0 +1,257 @@
+$def with(QueryDate)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站管理后台</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/static/js/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="nav navbar-inverse" role="navigotion" style="background:black">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascrpt:;" class="navbar-brand">游戏性能数据统计平台</a>
+            </div>
+
+            <button class="navbar-toggle navbar-center" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <ul class="nav navbar-nav  navbar-right" style="width: 200px">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span>Benjamin <b class="caret"></b></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:;"  class="userinfo">个人信息</a></li>
+                        <li><a href="javascript:;" class="xiugai">修改密码</a></li>
+                        <li><a href="/history">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <div style="height: 15px"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <ul id="main-nav" class="nav nav-tabs nav-stacked collapse navbar-collapse">
+
+                    <li>
+                        <div style="margin: auto">
+                            <a class="btn bg-warning btn-sm" style="margin-left: 20px"  data-toggle="modal" data-target="#myModal">新增</a>
+                            <a class="btn bg-info btn-sm" onclick="deleteSelect()">删除</a>
+                            <a class="btn bg-success btn-sm" onclick="ContrastSelect()">对比</a>
+                        </div>
+                    </li>
+                    <br>
+                    $for a in QueryDate:
+                        <li>
+
+                            <a class="addmeu" href="#" data-href="/query?date=$a">
+                                <input type="checkbox"  value="$a" name="chckBox">&nbsp;&nbsp;
+                                <i class="glyphicon glyphicon-calendar"></i>&nbsp;$a
+                            </a>
+                        </li>
+                </ul>
+            </div>
+
+            <!--<div class="col-md-10">-->
+                <!--主窗口-->
+            <!--</div>-->
+
+            <div class="col-md-10 column">
+
+                <div class="addpage">
+                    <img style="width: 100%" src="/static/img/welcome.gif" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--新增数据弹窗-->
+    <div class="modal fade" style="margin-top: 5%" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="UPPassWordLabe">新增性能数据</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" id="add-key-form"  method="post">
+                                <div class="form-group">
+                                    <label for="date">日期</label>
+                                    <input name="date" class="form-control" id="date" placeholder="日期" style="width: 150px">
+                                </div>
+                                <div class="form-group">
+                                    <label for="CPU">CPU<input type="file" id="cpufiles" multiple /></label>
+                                    <textarea rows="3" cols="20" type="text" name="CPU" class="form-control" id="CPU" style="width: 300px"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="FPS">FPS<input type="file" id="fpsfiles" multiple /></label>
+                                    <textarea rows="3" cols="20" type="text" name="FPS" class="form-control" id="FPS" style="width: 300px"></textarea>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="PSS">PSS<input type="file" id="pssfiles" multiple /></label>
+                                    <textarea rows="3" cols="20" type="text" name="PSS" class="form-control" id="PSS" style="width: 300px"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                    <button type="submit" id="btn_submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+
+    <div style="height: 50px"></div>
+		<div class="footer navbar-fixed-bottom"  style="background: black">
+			<div style="height: 15px"></div>
+			<ul class="list-inline text-center">
+				<li>Copyright ©2017.Benjamin Software All Rights Reserved.</li>
+			</ul>
+		</div>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+
+    <script type="text/javascript" language="javascript">
+
+
+        // 检查CheckBox选择状态
+        function CheckSelect(){
+            var chckBox = document.getElementsByName("chckBox");
+            var num = chckBox.length
+            var batchdelid = "";
+            for (var index = 0; index < num; index++) {
+                if (chckBox[index].checked) {
+                    batchdelid += chckBox[index].value + ",";
+                }
+            }
+            var CheckBox = batchdelid.substring(0, batchdelid.length - 1);
+            return CheckBox
+        }
+
+
+        // 批量删除数据
+        function deleteSelect() {
+            var batchdelid = CheckSelect();
+            if (batchdelid != "") {
+                if (window.confirm("确定删除所选记录？")) {
+                    jQuery.ajax({
+                        type: "GET",
+                        url: '/history',
+                        dataType: 'json',
+                        data: {
+                            "deldate": batchdelid,
+                        },
+                        success: function (data) {
+                            if (data["success"]) {
+                                alert("删除成功");
+                                window.location.reload(true);
+                            }
+                        },
+                        error: function (data) {
+                            alert("数据错误，请重试");
+                        }
+                    });
+                }
+            }else {
+                    alert("数据错误，请重试");
+            }
+        }
+
+        // 对比数据
+        function ContrastSelect() {
+            var contrastid = CheckSelect();
+            if (contrastid != "") {
+                if (1==1) {
+                    jQuery.ajax({
+                        type: "GET",
+                        url: '/history',
+                        dataType: 'json',
+                        data: {
+                            "contrast": contrastid,
+                        },
+                        success: function (data) {
+                            if (data["success"]) {
+                                openpage("/query?contrast="+contrastid);
+                            }
+                        },
+                        error: function (data) {
+                            alert("数据错误，请重试");
+                        }
+                    });
+                }
+            }else {
+                    alert("数据错误，请重试");
+            }
+        }
+
+    </script>
+
+    <script>
+
+      function CPUFileSelect(evt) {
+        var files = evt.target.files;
+        for (var i = 0, f; f = files[i]; i++) {
+
+          var reader = new FileReader();
+          reader.onload = (function(theFile) {
+            return function(e) {
+                document.getElementById("CPU").value=e.target.result;
+            };
+          })(f);
+          reader.readAsText(f);
+        }
+      }
+
+    function FPSFileSelect(evt) {
+        var files = evt.target.files;
+        for (var i = 0, f; f = files[i]; i++) {
+
+          var reader = new FileReader();
+          reader.onload = (function(theFile) {
+            return function(e) {
+                document.getElementById("FPS").value=e.target.result;
+            };
+          })(f);
+          reader.readAsText(f);
+        }
+      }
+
+    function PSSFileSelect(evt) {
+        var files = evt.target.files;
+        for (var i = 0, f; f = files[i]; i++) {
+
+          var reader = new FileReader();
+          reader.onload = (function(theFile) {
+            return function(e) {
+                document.getElementById("PSS").value=e.target.result;
+            };
+          })(f);
+          reader.readAsText(f);
+        }
+      }
+
+      document.getElementById('cpufiles').addEventListener('change', CPUFileSelect, false);
+      document.getElementById('fpsfiles').addEventListener('change', FPSFileSelect, false);
+      document.getElementById('pssfiles').addEventListener('change', PSSFileSelect, false);
+
+    </script>
+
+
+
+</body>
+</html>

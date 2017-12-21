@@ -1,4 +1,4 @@
-$def with(TapHero_cpu,TapHero_pss,TapHero_fps,TapHero_date,QiBin_cpu,QiBin_pss,QiBin_fps,TapHero_cpu_AverageDATA,TapHero_pss_AverageDATA,TapHero_fps_AverageDATA,QiBin_cpu_AverageDATA,QiBin_pss_AverageDATA,QiBin_fps_AverageDATA)
+$def with(datalist,cpu, fps, pss,date,cpu_AverageDATA,fps_AverageDATA,pss_AverageDATA)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +12,12 @@ $def with(TapHero_cpu,TapHero_pss,TapHero_fps,TapHero_date,QiBin_cpu,QiBin_pss,Q
     <div style="margin: auto;width: 800px">
         <br><br>
         <table  border="1" class="datalist">
+
+            <tr>
+                <td colspan="7" style="text-align: center">$:date</td>
+            </tr>
+
+
             <tr>
                 <td>序号</td>
                 <td>产品名称</td>
@@ -25,21 +31,11 @@ $def with(TapHero_cpu,TapHero_pss,TapHero_fps,TapHero_date,QiBin_cpu,QiBin_pss,Q
             <tr>
                 <td style="text-align: center">1</td>
                 <td>放置英雄</td>
-                <td style="text-align: center">$:TapHero_cpu_AverageDATA %</td>
-                <td style="text-align: center">$:TapHero_pss_AverageDATA Mb</td>
-                <td style="text-align: center">$:TapHero_fps_AverageDATA Fps</td>
+                <td style="text-align: center">$:cpu_AverageDATA %</td>
+                <td style="text-align: center">$:pss_AverageDATA Mb</td>
+                <td style="text-align: center">$:fps_AverageDATA Fps</td>
                 <td style="text-align: center">com.westbund.heros.en</td>
                 <td style="text-align: center">83626</td>
-            </tr>
-
-            <tr>
-                <td style="text-align: center">2</td>
-                <td>放置奇兵</td>
-                <td style="text-align: center">$:QiBin_cpu_AverageDATA %</td>
-                <td style="text-align: center">$:QiBin_pss_AverageDATA Mb</td>
-                <td style="text-align: center">$:QiBin_fps_AverageDATA Fps</td>
-                <td style="text-align: center">com.droidhang.ad</td>
-                <td style="text-align: center">105123</td>
             </tr>
         </table>
         <br><br>
@@ -54,44 +50,26 @@ $def with(TapHero_cpu,TapHero_pss,TapHero_fps,TapHero_date,QiBin_cpu,QiBin_pss,Q
         var myChart = new Chart(ctx, {
             type:"line",
             data:{
-                    labels:$:TapHero_date,
+                    labels:$:datalist,
                     datasets: [{
                         label:"放置英雄 CPU",
-                        data:$:TapHero_cpu,
+                        data:$:cpu,
                         fill:false,
                         borderColor:"rgb(255,215,0)",
                         lineTension:0.1
                     },{
                         label:"放置英雄 内存",
-                        data:$:TapHero_pss,
+                        data:$:fps,
                         fill:false,
                         borderColor:"rgb(30,144,255)",
                         lineTension:0.1
                     },{
                         label:"放置英雄 FPS",
-                        data:$:TapHero_fps,
+                        data:$:pss,
                         fill:false,
                         borderColor:"rgb(0,255,0)",
                         lineTension:0.1
-                    },{
-                        label:"放置奇兵 CPU",
-                        data:$:QiBin_cpu,
-                        fill:false,
-                        borderColor:"rgb(255,165,0)",
-                        lineTension:0.1
-                    },{
-                        label:"放置奇兵 内存",
-                        data:$:QiBin_pss,
-                        fill:false,
-                        borderColor:"rgb(0,0,255)",
-                        lineTension:0.1
-                    },{
-                        label:"放置奇兵 FPS",
-                        data:$:QiBin_fps,
-                        fill:false,
-                        borderColor:"rgb(0,100,0)",
-                        lineTension:0.1
-                    }]
+                    },]
             },
             options:{}
             });
