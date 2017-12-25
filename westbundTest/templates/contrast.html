@@ -1,4 +1,4 @@
-$def with(datalist, one_cpu, one_fps, one_pss,two_cpu, two_fps, two_pss,one_cpu_AverageDATA, one_fps_AverageDATA, one_pss_AverageDATA,two_cpu_AverageDATA, two_fps_AverageDATA, two_pss_AverageDATA)
+$def with(datalist, one_cpu, one_fps, one_pss,two_cpu, two_fps, two_pss,one_cpu_AverageDATA, one_fps_AverageDATA, one_pss_AverageDATA,two_cpu_AverageDATA, two_fps_AverageDATA, two_pss_AverageDATA,one_name,two_name)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,28 +18,22 @@ $def with(datalist, one_cpu, one_fps, one_pss,two_cpu, two_fps, two_pss,one_cpu_
                 <td>CPU消耗值</td>
                 <td>内存（PSS）消耗值</td>
                 <td>FPS平均帧数</td>
-                <td style="text-align: center">包名</td>
-                <td style="text-align: center">包大小 kb</td>
             </tr>
 
             <tr>
                 <td style="text-align: center">1</td>
-                <td>放置英雄</td>
+                <td>$:one_name</td>
                 <td style="text-align: center">$:one_cpu_AverageDATA %</td>
                 <td style="text-align: center">$:one_pss_AverageDATA Mb</td>
                 <td style="text-align: center">$:one_fps_AverageDATA Fps</td>
-                <td style="text-align: center">com.westbund.heros.en</td>
-                <td style="text-align: center">83626</td>
             </tr>
 
             <tr>
                 <td style="text-align: center">2</td>
-                <td>放置奇兵</td>
+                <td>$:two_name</td>
                 <td style="text-align: center">$:two_cpu_AverageDATA %</td>
                 <td style="text-align: center">$:two_pss_AverageDATA Mb</td>
                 <td style="text-align: center">$:two_fps_AverageDATA Fps</td>
-                <td style="text-align: center">com.droidhang.ad</td>
-                <td style="text-align: center">105123</td>
             </tr>
         </table>
         <br><br>
@@ -56,37 +50,37 @@ $def with(datalist, one_cpu, one_fps, one_pss,two_cpu, two_fps, two_pss,one_cpu_
             data:{
                     labels:$:datalist,
                     datasets: [{
-                        label:"放置英雄 CPU",
+                        label:"$:one_name CPU",
                         data:$:one_cpu,
                         fill:false,
                         borderColor:"rgb(255,215,0)",
                         lineTension:0.1
                     },{
-                        label:"放置英雄 内存",
+                        label:"$:one_name 内存",
                         data:$:one_pss,
                         fill:false,
                         borderColor:"rgb(30,144,255)",
                         lineTension:0.1
                     },{
-                        label:"放置英雄 FPS",
+                        label:"$:one_name FPS",
                         data:$:one_fps,
                         fill:false,
                         borderColor:"rgb(0,255,0)",
                         lineTension:0.1
                     },{
-                        label:"放置奇兵 CPU",
+                        label:"$:two_name CPU",
                         data:$:two_cpu,
                         fill:false,
                         borderColor:"rgb(255,165,0)",
                         lineTension:0.1
                     },{
-                        label:"放置奇兵 内存",
+                        label:"$:two_name 内存",
                         data:$:two_pss,
                         fill:false,
                         borderColor:"rgb(0,0,255)",
                         lineTension:0.1
                     },{
-                        label:"放置奇兵 FPS",
+                        label:"$:two_name FPS",
                         data:$:two_fps,
                         fill:false,
                         borderColor:"rgb(0,100,0)",

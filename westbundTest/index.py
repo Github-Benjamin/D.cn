@@ -97,6 +97,8 @@ class Query(object):
             raise web.seeother('/history')
         if lists[0]!="None":
             try:
+
+                one_name,two_name = lists[0],lists[1]
                 one_cpu, one_fps, one_pss = TestData.DataLoad(lists[0])
                 two_cpu, two_fps, two_pss = TestData.DataLoad(lists[1])
 
@@ -108,7 +110,7 @@ class Query(object):
                 for i in list(eval(str(one_cpu))):
                     a += 1
                     datalist.append(a)
-                return renter.contrast(datalist, one_cpu, one_fps, one_pss,two_cpu, two_fps, two_pss,one_cpu_AverageDATA, one_fps_AverageDATA, one_pss_AverageDATA,two_cpu_AverageDATA, two_fps_AverageDATA, two_pss_AverageDATA)
+                return renter.contrast(datalist, one_cpu, one_fps, one_pss,two_cpu, two_fps, two_pss,one_cpu_AverageDATA, one_fps_AverageDATA, one_pss_AverageDATA,two_cpu_AverageDATA, two_fps_AverageDATA, two_pss_AverageDATA,one_name,two_name)
             except:
                 raise web.seeother('/history')
 

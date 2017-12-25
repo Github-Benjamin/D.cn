@@ -1,0 +1,17 @@
+Adb Monkey测试命令：
+adb  shell monkey -p com.westbund.heros.en --ignore-timeouts --ignore-crashes --kill-process-after-error --pct-touch 35 --pct-syskeys 30 --pct-appswitch 35 --hprof --throttle 100 -v -v -v 1000
+
+获取CPU消耗：
+adb shell dumpsys cpuinfo com.westbund.heros.en
+adb shell dumpsys cpuinfo |grep com.westbund.heros.en
+adb shell top -n 10 -s cpu
+adb shell top -n 1 -d 1|grep com.westbund.heros.en
+adb shell top -n 1 -d 1|findstr com.westbund.heros.en
+
+获取内存消耗：
+adb shell dumpsys meminfo
+adb shell dumpsys meminfo|findstr com.westbund.heros.en
+
+获取FPS：无解
+adb shell dumpsys gfxinfo com.westbund.heros.en> fps.txt
+adb shell dumpsys SurfaceFlinger --latency com.westbund.heros.en/org.cocos2dx.lua.AppActivity
