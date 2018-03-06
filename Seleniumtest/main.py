@@ -29,9 +29,9 @@ class PythonOrgSearch(unittest.TestCase):
 
         # 输入用户名密码
         username = driver.find_element_by_name('username')
-        username.send_keys("qiang.qian@downjoy.com")
+        username.send_keys("qiang.xxxx@xxxxxxx.com")
         password = driver.find_element_by_name('password')
-        password.send_keys('Qianqiang~123')
+        password.send_keys('xxxxxxxx')
 
         # 点击的登陆按妞
         driver.find_element_by_name('login').click()
