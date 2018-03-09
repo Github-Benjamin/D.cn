@@ -10,8 +10,8 @@
 
 
 import unittest
-from TestCase import NotLogin
-from TestCase import AlreadyLogin
+from TestCaseBack import NotLogin
+from TestCaseBack import AlreadyLogin
 from Resource import HTMLTestRunner
 
 if __name__ == '__main__':

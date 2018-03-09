@@ -6,7 +6,7 @@ from Devices_config import *
 
 # 类别 开测时间 折扣
 txt_category = appPackage+":id/txt_category"
-txt_order = appPackage+"id/txt_order"
+txt_order = appPackage+":id/txt_order"
 txt_filter = appPackage+":id/txt_filter"
 
 # 分类名称
