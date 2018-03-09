@@ -63,7 +63,6 @@ class Notlogin(unittest.TestCase):
         self.driver.find_element_by_id(public.webview_back).click()
         print ('click public.webview_back')
 
-
     # 用例4 点击分类 类别塞选
     def public_category_txt_category(self):
         time.sleep(3)
@@ -157,30 +156,99 @@ class Notlogin(unittest.TestCase):
         # 获取列表游戏名称
         click_game = self.driver.find_elements_by_id(public.game_name)[0]
         click_game_name = click_game.text
-        print ('clicke click_game:%s'%click_game_name)
+        print('clicke click_game:%s'%click_game_name)
 
         try:
-            self.driver.find_elements_by_id(public.game_sale)
-            print('False')
-            return False
+            print(self.driver.find_element_by_id(public.game_sale).text)
         except:
             print('True')
-            return True
 
+    # 用例7 点击个人 投诉建议
+    def public_personal_feedback(self):
+        time.sleep(3)
+        self.driver.find_element_by_id(public.personal).click()
+        print ('click personal')
+        self.driver.find_element_by_id(personal.feedback).click()
+        print ('click personal.feedback')
+
+        # 获取窗口标题 断言
+        abs_title = self.driver.find_element_by_id(public.abs_title).text
+        self.assertEqual(abs_title,u"投诉建议")
+
+        # 随机选择联系方式
+        self.driver.find_element_by_id(personal.feedback_type).click()
+        num = random.randint(0,3)
+        feedback_tv_type = self.driver.find_elements_by_id(personal.feedback_tv_type)[num]
+        feedback_tv_type_name = feedback_tv_type.text
+        print("feedback_tv_type_name:%s"%feedback_tv_type_name)
+        feedback_tv_type.click()
+        print("click feedback_tv_type")
+
+        # 检查选择联系方式是否正确
+        self.assertEqual(feedback_tv_type_name,self.driver.find_element_by_id(personal.feedback_tv_type).text)
+        print("Assert select feedback_tv_type")
+
+        # 发送投诉信息
+        strs = ["phone","qq","wechat","email"]
+        ContactsList = ["18081011501", "350105629", "Benjamin350", "Benjamin_v@qq.com"]
+        self.driver.find_element_by_id(personal.feedback_content).send_keys("Select: "+strs[num]+str(ContactsList[num])+"\n\nBenjamin AutoTest")
+        self.driver.find_element_by_id(personal.feedback_contact).send_keys(ContactsList[num])
+        self.driver.find_element_by_id(personal.feedback_btn).click()
+        time.sleep(3)
+        print ('click personal.feedback:%s'%self.driver.find_element_by_id(personal.feedback).text)
+
+    # 用例8 点击个人 清除缓存
+    def public_personal_cache_size(self):
+        time.sleep(3)
+        self.driver.find_element_by_id(public.personal).click()
+        print ('click personal')
+
+        cache_size = self.driver.find_element_by_id(personal.cache_size)
+        cache_size_name = cache_size.text
+        print("cache_size:%s"%cache_size_name)
+        cache_size.click()
+        print ("clicck cache_size")
+
+        time.sleep(3)
+        cache_size_name = cache_size.text
+        print("cache_size:%s" % cache_size_name)
+        self.assertEqual(cache_size_name,'0B')
+        print("cache_size success")
+
+    # 用例9 点击个人 关于我们
+    def public_personal_about_us(self):
+        time.sleep(3)
+        self.driver.find_element_by_id(public.personal).click()
+        print('click personal')
+
+        self.driver.find_element_by_id(personal.about_us).click()
+        print('click about_us')
+
+        # 获取窗口标题 断言
+        abs_title = self.driver.find_element_by_id(public.abs_title).text
+        self.assertEqual(abs_title,u"关于")
+
+        # 获取当前版本，升级检测
+        version_up = self.driver.find_element_by_id(personal.version_up).text
+        print("version_up:%s"%version_up)
+        version = self.driver.find_element_by_id(personal.version).text
+        print("version:%s"%version)
 
 if __name__ == '__main__':
-
 
     # 初始化
     suite = unittest.TestSuite()
 
     # 添加单条测试用例
-    # suite.addTest(Notlogin('public_index'))
-    # suite.addTest(Notlogin('public_search'))
-    # suite.addTest(Notlogin('public_index_sale_rules'))
-    # suite.addTest(Notlogin('public_category_txt_category'))
-    # suite.addTest(Notlogin('public_category_txt_order'))
+    suite.addTest(Notlogin('public_index'))
+    suite.addTest(Notlogin('public_search'))
+    suite.addTest(Notlogin('public_index_sale_rules'))
+    suite.addTest(Notlogin('public_category_txt_category'))
+    suite.addTest(Notlogin('public_category_txt_order'))
     suite.addTest(Notlogin('public_category_txt_filter'))
+    suite.addTest(Notlogin('public_personal_feedback'))
+    suite.addTest(Notlogin('public_personal_cache_size'))
+    suite.addTest(Notlogin('public_personal_about_us'))
 
     # 生成测试报告
     timestr = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))

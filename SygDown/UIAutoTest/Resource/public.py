@@ -16,7 +16,7 @@ WebView_class = "android.webkit.WebView"
 
 # 顶部 返回、标题、下载
 abs_up = appPackage+":id/abs__up"
-abs_title = appPackage+"abs__action_bar_title"
+abs_title = appPackage+":id/abs__action_bar_title"
 abs_download = appPackage+":id/go_downloading"
 
 # 底部 首页 分类 充值 个人
