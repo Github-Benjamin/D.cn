@@ -105,6 +105,7 @@ class Notlogin(unittest.TestCase):
         time.sleep(3)
         self.driver.find_element_by_id(index.mygame).click()
         print('click index_mygame')
+        time.sleep(1)
         self.driver.find_element_by_id(login.back).click()
         print('click login.back')
 
@@ -126,7 +127,7 @@ class Notlogin(unittest.TestCase):
         time.sleep(3)
         self.driver.find_element_by_id(public.category).click()
         print('click category')
-
+        time.sleep(3)
         # 获取列表游戏名称
         click_game = self.driver.find_elements_by_id(public.game_name)[num]
         click_game_name = click_game.text
@@ -207,23 +208,23 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
 
     # 添加单条测试用例
-    # suite.addTest(Notlogin('Notlogin_CheckApp'))
-    # suite.addTest(Notlogin('Notlogin_click_message'))
-    # suite.addTest(Notlogin('Notlogin_click_download'))
-    # suite.addTest(Notlogin('Notlogin_click_downnload_btn'))
+    suite.addTest(Notlogin('Notlogin_CheckApp'))
+    suite.addTest(Notlogin('Notlogin_click_message'))
+    suite.addTest(Notlogin('Notlogin_click_download'))
+    suite.addTest(Notlogin('Notlogin_click_downnload_btn'))
     suite.addTest(Notlogin('Notlogin_click_detail_downnload_btn'))
     suite.addTest(Notlogin('Notlogin_click_index_mygame'))
-    # suite.addTest(Notlogin('Notlogin_click_category'))
+    suite.addTest(Notlogin('Notlogin_click_category'))
     suite.addTest(Notlogin('Notlogin_click_category_detail_downnload_btn'))
-    # suite.addTest(Notlogin('Notlogin_click_charge'))
-    # suite.addTest(Notlogin('Notlogin_click_personal_loginregister'))
-    # suite.addTest(Notlogin('Notlogin_click_personal_order_manager'))
-    # suite.addTest(Notlogin('Notlogin_click_personal_download_namager'))
-    # suite.addTest(Notlogin('Notlogin_click_personal_personal_security'))
+    suite.addTest(Notlogin('Notlogin_click_charge'))
+    suite.addTest(Notlogin('Notlogin_click_personal_loginregister'))
+    suite.addTest(Notlogin('Notlogin_click_personal_order_manager'))
+    suite.addTest(Notlogin('Notlogin_click_personal_download_namager'))
+    suite.addTest(Notlogin('Notlogin_click_personal_personal_security'))
 
     # 生成测试报告
-    timestr = (time.strftime('%Y-%m-%d %X',time.localtime(time.time()))).split()
-    filename = 'AutoTest.html'
+    timestr = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))
+    filename = timestr+'AutoTest.html'
     fp = open(filename,'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='result',description='report')
     runner.run(suite)

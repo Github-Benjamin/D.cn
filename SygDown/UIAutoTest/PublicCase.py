@@ -16,7 +16,6 @@ import unittest
 import time
 import random
 
-
 class Notlogin(unittest.TestCase):
 
     @classmethod
@@ -57,6 +56,7 @@ class Notlogin(unittest.TestCase):
         time.sleep(3)
         self.driver.find_element_by_id(index.sale_rules).click()
         print ('click public.sale_rules')
+        time.sleep(1)
         webview_close = self.driver.find_element_by_id(public.webview_close).text
         self.assertEqual(webview_close, u"关闭")
         print ('assert webview_close')
@@ -142,6 +142,7 @@ class Notlogin(unittest.TestCase):
         time.sleep(3)
         self.driver.find_element_by_id(public.category).click()
         print ('click category')
+        time.sleep(1)
         self.driver.find_element_by_id(category.txt_filter).click()
         print ('click category.txt_filter')
 
@@ -233,6 +234,7 @@ class Notlogin(unittest.TestCase):
         print("version_up:%s"%version_up)
         version = self.driver.find_element_by_id(personal.version).text
         print("version:%s"%version)
+
 
 if __name__ == '__main__':
 
