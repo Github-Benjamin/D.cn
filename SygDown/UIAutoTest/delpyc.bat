@@ -1,3 +1,3 @@
 del Resource\*.pyc
-del TestCase\*.pyc
+del TestCaseBack\*.pyc
 del *.pyc

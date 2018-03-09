@@ -7,7 +7,7 @@ from Devices_config import *
 # 顶部 信息 搜索 下载
 message = appPackage+":id/home_toolbar_message"
 search = appPackage+":id/toolbar_search_layout"
-download = appPackage+"id/home_toolbar_download"
+download = appPackage+":id/home_toolbar_download"
 
 # webview控件搜索
 webview_back = appPackage+":id/webview_back"
@@ -23,7 +23,7 @@ abs_download = appPackage+":id/go_downloading"
 index = appPackage+":id/home_rb_mainpage_index"
 category = appPackage+":id/home_rb_mainpage_category"
 charge = appPackage+":id/home_rb_mainpage_charge"
-account = appPackage+":id/home_rb_mainpage_account"
+personal = appPackage+":id/home_rb_mainpage_account"
 
 # 列表 游戏名称 游戏大小 概述 折扣 下载按钮
 game_name = appPackage+":id/item_game_name"

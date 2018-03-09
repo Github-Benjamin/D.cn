@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>result</h1>
-<p class='attribute'><strong>Start Time:</strong> 2018-03-08 18:24:18</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:44.599000</p>
-<p class='attribute'><strong>Status:</strong> Pass 3</p>
+<p class='attribute'><strong>Start Time:</strong> 2018-03-09 10:25:09</p>
+<p class='attribute'><strong>Duration:</strong> 0:07:18.365000</p>
+<p class='attribute'><strong>Status:</strong> Pass 10 Error 3</p>
 
 <p class='description'>report</p>
 </div>
@@ -221,17 +221,17 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='passClass'>
-    <td>Dttest</td>
-    <td>3</td>
-    <td>3</td>
+<tr class='errorClass'>
+    <td>Notlogin</td>
+    <td>13</td>
+    <td>10</td>
     <td>0</td>
-    <td>0</td>
-    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c1',13)">Detail</a></td>
 </tr>
 
 <tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_sleep</div></td>
+    <td class='none'><div class='testcase'>Notlogin_CheckApp</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -245,8 +245,9 @@ function showOutput(id, name) {
         </div>
         <pre>
         
-pt1.1: sleep passed
-do nothing
+pt1.1: install app
+Notlogin_CheckApp
+quit app
 
 
         </pre>
@@ -257,7 +258,7 @@ do nothing
 </tr>
 
 <tr id='pt1.2' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_clicktap1</div></td>
+    <td class='none'><div class='testcase'>Notlogin_click_message</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -271,7 +272,10 @@ do nothing
         </div>
         <pre>
         
-pt1.2: click index
+pt1.2: install app
+click message
+click login.back
+quit app
 
 
         </pre>
@@ -282,7 +286,7 @@ pt1.2: click index
 </tr>
 
 <tr id='pt1.3' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_clicktap2</div></td>
+    <td class='none'><div class='testcase'>Notlogin_click_download</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -296,7 +300,309 @@ pt1.2: click index
         </div>
         <pre>
         
-pt1.3: click category
+pt1.3: install app
+click download
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: install app
+click downnload_btn
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.5' class='none'>
+    <td class='errorCase'><div class='testcase'>Notlogin_click_detail_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.5')" >
+        error</a>
+
+    <div id='div_ft1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.5: install app
+Traceback (most recent call last):
+  File "NotLogin.py", line 80, in Notlogin_click_detail_downnload_btn
+    click_game = self.driver.find_elements_by_id(public.game_name)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.6' class='none'>
+    <td class='errorCase'><div class='testcase'>Notlogin_click_index_mygame</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.6')" >
+        error</a>
+
+    <div id='div_ft1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.6: install app
+click index_mygame
+Traceback (most recent call last):
+  File "NotLogin.py", line 109, in Notlogin_click_index_mygame
+    self.driver.find_element_by_id(login.back).click()
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_category</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: install app
+click category
+click downnload_btn
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.8' class='none'>
+    <td class='errorCase'><div class='testcase'>Notlogin_click_category_detail_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.8')" >
+        error</a>
+
+    <div id='div_ft1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.8: install app
+click category
+Traceback (most recent call last):
+  File "NotLogin.py", line 132, in Notlogin_click_category_detail_downnload_btn
+    click_game = self.driver.find_elements_by_id(public.game_name)[num]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_charge</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: install app
+click charge
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_personal_loginregister</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        pass</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: install app
+click personal
+click login&amp;register
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_personal_order_manager</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        pass</a>
+
+    <div id='div_pt1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.11: install app
+click personal
+click login&amp;register
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_personal_download_namager</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        pass</a>
+
+    <div id='div_pt1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.12: install app
+click personal
+click login&amp;register
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>Notlogin_click_personal_personal_security</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        pass</a>
+
+    <div id='div_pt1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.13: install app
+click personal
+click login&amp;register
+click login.back
+quit app
 
 
         </pre>
@@ -308,10 +614,10 @@ pt1.3: click category
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>3</td>
-    <td>3</td>
+    <td>13</td>
+    <td>10</td>
     <td>0</td>
-    <td>0</td>
+    <td>3</td>
     <td>&nbsp;</td>
 </tr>
 </table>
