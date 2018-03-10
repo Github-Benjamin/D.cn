@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SyDgown AutoTest Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>SyDgown AutoTest Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-03-10 14:32:27</p>
+<p class='attribute'><strong>Duration:</strong> 0:30:10.772000</p>
+<p class='attribute'><strong>Status:</strong> Pass 24 Error 11</p>
+
+<p class='description'>Author Benjamin.</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestNotLogin.Notlogin</td>
+    <td>13</td>
+    <td>13</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',13)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_CheckApp</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: install app
+Notlogin_CheckApp
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_category</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: install app
+click category
+click downnload_btn
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_category_detail_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: install app
+click category
+clicke click_game:大帝国征服者
+click game_name
+detail.name:大帝国征服者
+Assert True
+detail.download
+CheckLoginPage
+click login.back
+click detail.cancel
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_charge</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: install app
+click charge
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_detail_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: install app
+clicke click_game:蜀山战纪2踏火行歌
+click game_name
+detail.name:蜀山战纪2踏火行歌
+Assert True
+detail.download
+CheckLoginPage
+click login.back
+click detail.cancel
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_download</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: install app
+click download
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: install app
+click downnload_btn
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_index_mygame</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        pass</a>
+
+    <div id='div_pt1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.8: install app
+click index_mygame
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_message</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: install app
+click message
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_personal_download_namager</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        pass</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: install app
+click personal
+click personal.download_namager
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_personal_loginregister</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        pass</a>
+
+    <div id='div_pt1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.11: install app
+click personal
+click personal.not_login
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_personal_order_manager</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        pass</a>
+
+    <div id='div_pt1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.12: install app
+click personal
+click personal.order_manager
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Notlogin_click_personal_personal_security</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        pass</a>
+
+    <div id='div_pt1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.13: install app
+click personal
+click personal.personal_security
+CheckLoginPage
+click login.back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestPublicCase.TestPublicCase</td>
+    <td>9</td>
+    <td>9</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',9)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_category_txt_category</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: install app
+click category
+click category.txt_category
+click txt_name_name:养成
+click txt_name
+clicke click_game:我的便利店
+click game_name
+detail.name:我的便利店
+Assert True
+game_type:养成,3D,动漫
+Assert True
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_category_txt_filter</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: install app
+click category
+click category.txt_filter
+click txt_name_name:无折扣
+click txt_name
+clicke click_game:凡人修真
+True
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_category_txt_order</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: install app
+click category
+click category.txt_order
+click txt_name_name:已经开测
+click txt_name
+clicke click_game:斗战英魂
+click game_name
+detail.name:斗战英魂
+Assert True
+find detail.open_server
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_index</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: install app
+public_index CheckAPP
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_index_sale_rules</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.5')" >
+        pass</a>
+
+    <div id='div_pt2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.5: install app
+click public.sale_rules
+assert webview_close
+click public.webview_back
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_personal_about_us</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.6')" >
+        pass</a>
+
+    <div id='div_pt2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.6: install app
+click personal
+click about_us
+version_up:v1.0.0
+version:v1.0.0
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_personal_cache_size</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.7')" >
+        pass</a>
+
+    <div id='div_pt2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.7: install app
+click personal
+cache_size:291.76KB
+clicck cache_size
+cache_size:0B
+cache_size success
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_personal_feedback</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.8')" >
+        pass</a>
+
+    <div id='div_pt2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.8: install app
+click personal
+click personal.feedback
+feedback_tv_type_name:手机号
+click feedback_tv_type
+Assert select feedback_tv_type
+click personal.feedback:投诉建议
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_public_search</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.9')" >
+        pass</a>
+
+    <div id='div_pt2.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.9: install app
+click public.search
+assert search_btn
+click public.search
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>TestLogin.TestLogin</td>
+    <td>13</td>
+    <td>2</td>
+    <td>0</td>
+    <td>11</td>
+    <td><a href="javascript:showClassDetail('c3',13)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_CheckApp</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: install app
+Login_CheckApp
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_click_category</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+        pass</a>
+
+    <div id='div_pt3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.2: install app
+click category
+click downnload_btn
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+username:Benjamin001
+Assert username
+quit app
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_category_detail_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.3')" >
+        error</a>
+
+    <div id='div_ft3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.3: install app
+click category
+clicke click_game:大帝国征服者
+click game_name
+detail.name:大帝国征服者
+Assert True
+detail.download
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 182, in test_Login_click_category_detail_downnload_btn
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 66, in CheckLogin
+    self.driver.find_element_by_id(public.personal).click()
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_charge</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.4')" >
+        error</a>
+
+    <div id='div_ft3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.4: install app
+click charge
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 189, in test_Login_click_charge
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    username = self.driver.find_element_by_id(personal.username).text
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_detail_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.5')" >
+        error</a>
+
+    <div id='div_ft3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.5: install app
+clicke click_game:蜀山战纪2踏火行歌
+click game_name
+detail.name:蜀山战纪2踏火行歌
+Assert True
+detail.download
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 128, in test_Login_click_detail_downnload_btn
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 66, in CheckLogin
+    self.driver.find_element_by_id(public.personal).click()
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_download</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.6')" >
+        error</a>
+
+    <div id='div_ft3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.6: install app
+click download
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 93, in test_Login_click_download
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    username = self.driver.find_element_by_id(personal.username).text
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_downnload_btn</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.7')" >
+        error</a>
+
+    <div id='div_ft3.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.7: install app
+click downnload_btn
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 101, in test_Login_click_downnload_btn
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 66, in CheckLogin
+    self.driver.find_element_by_id(public.personal).click()
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_index_mygame</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.8')" >
+        error</a>
+
+    <div id='div_ft3.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.8: install app
+click index_mygame
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 137, in test_Login_click_index_mygame
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    username = self.driver.find_element_by_id(personal.username).text
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_message</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.9')" >
+        error</a>
+
+    <div id='div_ft3.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.9: install app
+click message
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 85, in test_Login_click_message
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    username = self.driver.find_element_by_id(personal.username).text
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_personal_download_namager</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.10')" >
+        error</a>
+
+    <div id='div_ft3.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.10: install app
+click personal
+click personal.download_namager
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 217, in test_Login_click_personal_download_namager
+    self.CheckLogin()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    username = self.driver.find_element_by_id(personal.username).text
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.11' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_personal_loginregister</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.11')" >
+        error</a>
+
+    <div id='div_ft3.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.11: install app
+click personal
+click personal.not_login
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 199, in test_Login_click_personal_loginregister
+    self.driver.find_element_by_id(public.charge).click()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    print("click public.personal")
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_personal_order_manager</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.12')" >
+        error</a>
+
+    <div id='div_ft3.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.12: install app
+click personal
+click personal.order_manager
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 208, in test_Login_click_personal_order_manager
+    self.driver.find_element_by_id(public.personal).click()
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    print("click public.personal")
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.13' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Login_click_personal_personal_security</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.13')" >
+        error</a>
+
+    <div id='div_ft3.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.13: install app
+click personal
+click personal.personal_security
+CheckLogin
+checck login_page
+click login.username_login
+send_text user_username:Benjamin001
+send_text user_passwd:123456
+click user_login_btn
+click back
+click back
+click public.personal
+Traceback (most recent call last):
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 226, in test_Login_click_personal_personal_security
+  File "D:\python\Pro-Testing-Demo\Test\SyDown\UIAutoTest\TestLogin.py", line 69, in CheckLogin
+    print("click public.personal")
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 289, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 791, in find_element
+    'value': value})['value']
+  File "D:\code_path\python27\lib\site-packages\selenium-3.4.3-py2.7.egg\selenium\webdriver\remote\webdriver.py", line 256, in execute
+    self.error_handler.check_response(response)
+  File "D:\code_path\python27\lib\site-packages\appium\webdriver\errorhandler.py", line 29, in check_response
+    raise wde
+NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>35</td>
+    <td>24</td>
+    <td>0</td>
+    <td>11</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

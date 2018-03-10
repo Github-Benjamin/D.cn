@@ -3,12 +3,13 @@
 # @Author : Benjamin
 # @Time : 2018/3/8 16:21
 import unittest
-from appium import webdriver
 import time
+from appium import webdriver
 from Resource import HTMLTestRunner
 
 
 class Dttest(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         print('start setup')

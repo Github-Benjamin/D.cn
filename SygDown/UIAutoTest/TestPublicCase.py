@@ -15,8 +15,9 @@ from Resource import personal
 import unittest
 import time
 import random
+import os
 
-class Notlogin(unittest.TestCase):
+class TestPublicCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -27,6 +28,7 @@ class Notlogin(unittest.TestCase):
         print('tearDown')
 
     def setUp(self):
+        os.system("adb shell pm clear com.sygdown.market")
         self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', Devices_config.desired_caps)
         print('install app')
 
@@ -35,13 +37,13 @@ class Notlogin(unittest.TestCase):
         print('quit app')
 
     # 用例1 打开APP冒烟检查
-    def public_index(self):
+    def test_public_index(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.index).click()
         print ('public_index CheckAPP')
 
     # 用例2 点击首页搜索，然后返回
-    def public_search(self):
+    def test_public_search(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.search).click()
         print ('click public.search')
@@ -52,7 +54,7 @@ class Notlogin(unittest.TestCase):
         print ('click public.search')
 
     # 用例3 点击首页折扣说明检查内嵌页
-    def public_index_sale_rules(self):
+    def test_public_index_sale_rules(self):
         time.sleep(3)
         self.driver.find_element_by_id(index.sale_rules).click()
         print ('click public.sale_rules')
@@ -64,7 +66,7 @@ class Notlogin(unittest.TestCase):
         print ('click public.webview_back')
 
     # 用例4 点击分类 类别塞选
-    def public_category_txt_category(self):
+    def test_public_category_txt_category(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.category).click()
         print ('click category')
@@ -102,7 +104,7 @@ class Notlogin(unittest.TestCase):
         print ("Assert True")
 
     # 用例5 点击分类 类别开测时间 已经开测
-    def public_category_txt_order(self):
+    def test_public_category_txt_order(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.category).click()
         print ('click category')
@@ -138,7 +140,7 @@ class Notlogin(unittest.TestCase):
         print('find detail.open_server')
 
     # 用例6 点击分类 类别折扣 无折扣
-    def public_category_txt_filter(self):
+    def test_public_category_txt_filter(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.category).click()
         print ('click category')
@@ -165,7 +167,7 @@ class Notlogin(unittest.TestCase):
             print('True')
 
     # 用例7 点击个人 投诉建议
-    def public_personal_feedback(self):
+    def test_public_personal_feedback(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.personal).click()
         print ('click personal')
@@ -199,7 +201,7 @@ class Notlogin(unittest.TestCase):
         print ('click personal.feedback:%s'%self.driver.find_element_by_id(personal.feedback).text)
 
     # 用例8 点击个人 清除缓存
-    def public_personal_cache_size(self):
+    def test_public_personal_cache_size(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.personal).click()
         print ('click personal')
@@ -217,7 +219,7 @@ class Notlogin(unittest.TestCase):
         print("cache_size success")
 
     # 用例9 点击个人 关于我们
-    def public_personal_about_us(self):
+    def test_public_personal_about_us(self):
         time.sleep(3)
         self.driver.find_element_by_id(public.personal).click()
         print('click personal')
@@ -236,27 +238,27 @@ class Notlogin(unittest.TestCase):
         print("version:%s"%version)
 
 
-if __name__ == '__main__':
-
-    # 初始化
-    suite = unittest.TestSuite()
-
-    # 添加单条测试用例
-    suite.addTest(Notlogin('public_index'))
-    suite.addTest(Notlogin('public_search'))
-    suite.addTest(Notlogin('public_index_sale_rules'))
-    suite.addTest(Notlogin('public_category_txt_category'))
-    suite.addTest(Notlogin('public_category_txt_order'))
-    suite.addTest(Notlogin('public_category_txt_filter'))
-    suite.addTest(Notlogin('public_personal_feedback'))
-    suite.addTest(Notlogin('public_personal_cache_size'))
-    suite.addTest(Notlogin('public_personal_about_us'))
-
-    # 生成测试报告
-    timestr = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))
-    filename = timestr+'AutoTest.html'
-    fp = open(filename,'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='result',description='report')
-    runner.run(suite)
-    fp.close()
-
+# if __name__ == '__main__':
+    # 执行所有以test开头的用例
+    # unittest.main()
+    # # 初始化
+    # suite = unittest.TestSuite()
+    #
+    # # 添加单条测试用例
+    # suite.addTest(Notlogin('public_index'))
+    # suite.addTest(Notlogin('public_search'))
+    # suite.addTest(Notlogin('public_index_sale_rules'))
+    # suite.addTest(Notlogin('public_category_txt_category'))
+    # suite.addTest(Notlogin('public_category_txt_order'))
+    # suite.addTest(Notlogin('public_category_txt_filter'))
+    # suite.addTest(Notlogin('public_personal_feedback'))
+    # suite.addTest(Notlogin('public_personal_cache_size'))
+    # suite.addTest(Notlogin('public_personal_about_us'))
+    #
+    # # 生成测试报告
+    # timestr = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))
+    # filename = timestr+'AutoTest.html'
+    # fp = open(filename,'wb')
+    # runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='result',description='report')
+    # runner.run(suite)
+    # fp.close()

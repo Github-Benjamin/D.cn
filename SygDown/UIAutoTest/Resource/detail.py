@@ -25,7 +25,7 @@ content = appPackage+":id/res_detail_intro_content"
 download = appPackage+":id/btn_download"
 charge = appPackage+":id/btn_charge"
 
-# 登陆后显示 具体折扣数数据
+# 登陆后显示 具体折扣搜索说数据
 discount_content = appPackage+":id/res_detail_discount_content"
 # 开服表
 open_server = appPackage+":id/res_detail_open_server"
