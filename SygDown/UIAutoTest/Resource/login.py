@@ -6,6 +6,8 @@ from Devices_config import *
 
 # 返回
 back = appPackage+":id/img_back"
+verifys = appPackage+":id/dcn_iv_verify_pic"
+input_verifys = appPackage+":id/dcn_et_verify_code"
 
 # 验证码登陆/注册页面
 phone = appPackage+":id/ed_register_phone"
