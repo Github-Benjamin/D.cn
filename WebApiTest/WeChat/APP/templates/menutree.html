@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>菜单管理</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-treeview.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <div class="col-md-10">
+            <h2>菜单管理
+                <a class="btn btn-danger" style="margin-left: 200px" id="batchdel" onclick="deleteSelect()">删除</a>
+                <a class="btn btn-danger right" data-toggle="modal" style="margin-left: 30px" data-target="#myModal">新增</a>
+            </h2>
+            <hr>
+        </div>
+
+            <form role="form" style="padding-left:50px">
+                <div class="container-fluid">
+                    <div class="accordion" id="accordion2">
+
+                        {% for tree in ret.tree %}
+                        <div class="col-md-12">
+
+                            <div class="col-md-2">
+
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                         <h3><input type="checkbox"  value="{{ tree.id }}" name="chckBox"></h3>
+                                    </div>
+                                    <div class="col-md-6">
+                                         <h3 class="upmenu" data-id="{{tree.id}}" data-type="{{tree.type}}" data-name="{{tree.name}}" data-key="{{tree.key}}" data-url="{{tree.url}}"><i class="glyphicon glyphicon-edit"></i></h3>
+                                    </div>
+                                </div>
+                                <div  class="col-md-8">
+                                    <div class="accordion-group accordion-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#tee{{ tree.id }}">
+                                        <h3>{{ tree.name }}</h3>
+                                    </div>
+                                </div>
+
+                                <div id="tee{{ tree.id }}" class="accordion-body collapse" style="height: 0px; width:400px">
+                                    <div class="accordion-inner">
+                                        <div class="checkbox" style="padding-left: 40px">
+                                            {% for relopermissions in ret.relopermissions %}
+                                                {% if tree.level == "2" %}
+                                                    {% if relopermissions.buttontype == tree.button %}
+                                                        <div class="col-md-12">
+                                                            <h4>
+                                                                <input type="checkbox"  value="{{ relopermissions.id }}" name="chckBox">
+                                                                <div  class="uppermissions" data-id="{{ relopermissions.id }}" data-type="{{relopermissions.type}}" data-menuname="{{ relopermissions.name }}" data-url="{{ relopermissions.url }}" data-key="{{ relopermissions.key }}" data-menutreeid="{{ relopermissions.buttontype }}">
+                                                                    {{ relopermissions.name }}
+                                                                </div>
+                                                            </h4>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-10"></div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+        </form>
+
+    </div>
+
+
+    <!--新增一级管理弹窗-->
+    <div class="modal fade" style="margin-top: 5%" id="MenuModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="addmenu">新增一级菜单</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="addmenuname">菜单名称</label>
+                                    <input type="text" name="addmenuname" class="form-control" placeholder="菜单名称" style="width: 200px">
+                                </div>
+                                <div class="form-group">
+                                   <label for="addtype">类型</label>
+
+                                    <select class="form-control select_type" name="addtype" style="width: auto">
+                                        <option value="click">click</option>
+                                        <option value="view">view</option>
+                                        <option value="0">二级菜单</option>
+                                    </select>
+
+                                    <br>
+                                    <input type="text" name="type" class="form-control addtypeinput" placeholder="type值"  style="display: block">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+    <!--修改一级管理弹窗-->
+    <div class="modal fade" style="margin-top: 5%" id="upOneMenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="UPPassWordLabe">修改一级菜单</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" id="add-key-form"  method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="addmenuname">菜单名称</label>
+                                    <input type="hidden" name="uponeid" id="uponeid">
+                                    <input type="text" name="upmenuname" class="form-control" id="addmenuname" placeholder="菜单名称" style="width: 200px">
+                                </div>
+                                <div class="form-group">
+                                   <label for="txt_statu">类型</label>
+                                    <select class="form-control select_type addtype" name="addtype" style="width: auto">
+                                        <option value="click">click</option>
+                                        <option value="view">view</option>
+                                        <option value="0">二级菜单</option>
+                                    </select>
+                                    <br>
+                                    <input type="text" name="type" class="form-control addtypeinput uptype" placeholder="type值" style="display: block">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                    <button type="submit" id="btn_submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+    <!--新增二级管理弹窗-->
+    <div class="modal fade" style="margin-top: 5%" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">新增二级菜单<a class="btn btn-danger right" data-toggle="modal" style="margin-left: 30px" data-dismiss="modal" data-target="#MenuModal">新增</a></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                        <label for="menuid">一级菜单</label>
+                                        <select class="form-control" name="menuid" id="menuid" style="width: auto">
+                                            {% for i in ret.tree %}
+                                                {% if i.level == '2' %}
+                                                    <option value="{{ i.button }}">{{ i.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="menuname">二级菜单</label>
+                                    <input type="text" name="menuname" class="form-control" id="menuname" placeholder="菜单名称" style="width: 200px">
+                                </div>
+
+
+                                <div class="form-group">
+                                   <label for="addtype">类型</label>
+                                    <select class="form-control" name="addtype" style="width: auto">
+                                        <option value="click">click</option>
+                                        <option value="view">view</option>
+                                    </select>
+                                    <br>
+                                    <input type="text" name="type" class="form-control" placeholder="type值">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+    <!--修改二级菜单管理弹窗-->
+    <div class="modal fade" style="margin-top: 5%" id="upmyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">修改菜单信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form"method="post">
+                                {% csrf_token %}
+                                <input type="text" name="upid" id="uppermissionsid" style="display: none">
+                                <div class="form-group">
+                                        <label>菜单选择</label>
+                                        <select class="form-control"  name="upmenuid" id="upid" style="width: auto">
+                                            {% for i in ret.tree %}
+                                                {% if i.level == '2' %}
+                                                    <option value="{{ i.button }}">{{ i.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="upmenuname">菜单名称</label>
+                                    <input type="text" name="upmenuname" class="form-control" id="upmenuname" placeholder="菜单名称" style="width: 200px">
+                                </div>
+
+
+                                <div class="form-group">
+                                   <label for="txt_statu">类型</label>
+                                    <select class="form-control" name="addtype" id="upaddtype" style="width: auto">
+                                        <option value="click">click</option>
+                                        <option value="view">view</option>
+                                    </select>
+                                    <br>
+                                    <input type="text" name="type" class="form-control" id="uptype" placeholder="type值">
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        function getCsrfToken() {
+              var name = 'csrftoken';
+              var cookieValue = 'X1HaSgZGX62GIjCB5BIeNpVuTL9smWuL'
+              if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                  var cookie = cookies[i].trim();
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                  }
+                }
+              }
+              return cookieValue
+        }
+
+        // 修改一级菜单操作
+        $(".upmenu").click(function () {
+            var id= $(this).attr("data-id");
+            var type= $(this).attr("data-type");
+            var name= $(this).attr("data-name");
+            var key= $(this).attr("data-key");
+            var url= $(this).attr("data-url");
+
+            $("#uponeid").val(id);
+            $("#addmenuname").val(name);
+
+            if (type.length != 0 && type != "None" ) {
+                $(".addtypeinput").attr("style","display:block");
+                $(".addtype").val(type);
+                if (url.length != 0 && url != "None" ) {
+                    $(".uptype").val(url);
+                }
+                if (key.length != 0 && key != "None")
+                {
+                    $(".uptype").val(key);
+                }
+            }else {
+                $(".addtype").val("0");
+                $(".addtypeinput").attr("style","display:none");
+            }
+            $("#upOneMenu").modal();
+
+        });
+
+        // 修改二级菜单操作
+        $(".uppermissions").click(function () {
+            var uppermissionsid= $(this).attr("data-id");
+            var upmenuname= $(this).attr("data-menuname");
+            var upurl= $(this).attr("data-url");
+            var upkey= $(this).attr("data-key");
+            var menutreeid= $(this).attr("data-menutreeid");
+            var uptype= $(this).attr("data-type");
+
+            $("#uppermissionsid").val(uppermissionsid);
+            $("#upmenuname").val(upmenuname);
+
+            if (upurl.length != 0 && upurl != "None" ) {
+                $("#uptype").val(upurl);
+            }
+
+            if (upkey.length != 0 && upkey != "None")
+            {
+                $("#uptype").val(upkey);
+            }
+
+            $("#upaddtype").val(uptype);
+
+            $("#upid").val(menutreeid);
+            $("#upmyModal").modal();
+        });
+
+        //批量选择checkbox
+        function seltAll() {
+            var chckBoxSign = document.getElementById("selectAll");       //ckb 全选/反选的选择框id
+            var chckBox = document.getElementsByName("chckBox");    //所有的选择框其那么都是chckBox
+            var num = chckBox.length;
+            if (chckBoxSign.checked) {
+                for (var index = 0; index < num; index++) {
+                    chckBox[index].checked = true;
+                }
+            } else {
+                for (var index = 0; index < num; index++) {
+                    chckBox[index].checked = false;
+                }
+            }
+        }
+
+        //批量删除数据
+        function deleteSelect() {
+            var chckBox = document.getElementsByName("chckBox");
+            var num = chckBox.length
+            var batchdelid = "";
+            for (var index = 0; index < num; index++) {
+                if (chckBox[index].checked) {
+                    batchdelid += chckBox[index].value + ",";
+                }
+            }
+
+            if (batchdelid != "") {
+                if (window.confirm("确定删除所选记录？")) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/test',
+                        dataType: 'json',
+                        data: {
+                            "batchdelid": batchdelid.substring(0, batchdelid.length - 1),
+                            "csrfmiddlewaretoken": getCsrfToken(),
+                        },
+                        success: function (data) {
+                            if (data["success"]) {
+                                alert("删除成功");
+                                window.location.reload(true);
+                            }
+                        },
+                        error: function (data) {
+                            alert("系统错误，删除失败");
+                        }
+                    });
+                }
+            }else {
+                    alert("请选择要删除的记录");
+            }
+        }
+
+        // 新增一级菜单input输入框选择隐藏
+        $(".select_type").bind("change",function(){
+            if($(this).val()=="0"){
+              $(".addtypeinput").attr("style","display:none");
+            }else {
+                $(".addtypeinput").attr("style","display:block");
+            }
+          });
+
+    </script>
+
+
+</body>
+</html>

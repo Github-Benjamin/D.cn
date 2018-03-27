@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信菜单管理</title>
+    <!--图标样式-->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+
+</head>
+
+<body>
+    <h2>微信菜单管理</h2>
+    <br>
+
+        <div class="tree well">
+            <ul id="rootUL">
+
+            </ul>
+        </div>
+
+        <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+        <p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+        <p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+        </div>
+
+
+</body>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/menutree.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', '关闭');
+            $('.tree li.parent_li > span').on('click', function (e) {
+                var children = $(this).parent('li.parent_li').find(' > ul > li');
+                if (children.is(":visible")) {
+                    children.hide('fast');
+                    $(this).attr('title', '展开').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+                } else {
+                    children.show('fast');
+                    $(this).attr('title', '关闭').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+                }
+                e.stopPropagation();
+            });
+        });
+    </script>
+
+
+
+
+</html>
